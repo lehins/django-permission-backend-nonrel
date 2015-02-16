@@ -1,11 +1,12 @@
-from django.contrib.auth.models import User, Group
+from django.conf import settings
+from django.contrib.auth.models import Group
 from django.db import models
 
 from djangotoolbox.fields import ListField
 
 
 class UserPermissionList(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     permission_list = ListField(models.CharField(max_length=64))
     permission_fk_list = ListField(models.CharField(max_length=32))
